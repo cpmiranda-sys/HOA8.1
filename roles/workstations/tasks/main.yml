@@ -1,0 +1,39 @@
+---
+- name: install updates (CentOS)
+  tags: always
+  yum:
+    update_only: yes
+    update_cache: yes
+  when: ansible_distribution == "CentOS"
+
+- name: install updates (Ubuntu)
+  tags: always
+  apt:
+    upgrade: dist
+    update_cache: yes
+  when: ansible_distribution == "Ubuntu"
+
+- name: install Nagios (centOS)
+  yum:
+    name: nagios
+    state: present
+    use_backend: dnf4
+  when: ansible_distribution == "CentOS"
+
+- name: install Nagios (Ubuntu) 
+  apt:
+    name: nagios3-core
+    update_cache: yes
+    state: present
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install Nagios Dependencies (CentOS)
+  yum:
+    name: 
+      - gd-devel
+      - libpng-devel
+      - freetype-devel
+      - gcc
+      - glibc
+    state: present
+  when: ansible_distribution == "CentOS"

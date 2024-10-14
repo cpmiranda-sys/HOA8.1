@@ -1,0 +1,10 @@
+[web_servers]
+192.168.56.11
+192.168.56.13 ansible_user=vboxuser
+[db_servers]
+192.168.56.12
+192.168.56.13 ansible_user=vboxuser
+[file_servers]
+192.168.56.13 ansible_user=vboxuser
+[workstations]
+192.168.56.11 
